@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h2>Admin Page</h2><br>
+
+<div style="border: 1px solid black; padding : 20px">
+    <h3>Brands</h3>
+{% for brand in brands %}
+
+<p>{{ brand.name }}</p>
+<a href="{% url 'update-brand' brand.id %}">Update</a>
+<a href="{% url 'delete-brand' brand.id %}">Delete</a><br><br>
+
+{% endfor %}
+
+<a  class="btn btn-secondary" href="{% url 'add-brand' %}">Add Brand</a><br><br>
+
+</div>
+<br><br>
+
+<div style="border: 1px solid black; padding : 20px">
+    <h3>Cars</h3>
+{% for car in cars %}
+
+<p>{{ car.name }} - ( {{ car.brand }} )</p>
+<a href="{% url 'update-cars' car.id %}">Update</a>
+<a href="{% url 'delete-cars' car.id %}">Delete</a><br><br>
+
+{% endfor %}
+
+<a class="btn btn-secondary" href="{% url 'add-car' %}">Add Car</a><br><br>
+
+</div>
+<br><br>
+   
+{% endblock %}
+    

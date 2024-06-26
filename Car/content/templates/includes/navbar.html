@@ -1,0 +1,43 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 20px;">
+    <a class="navbar-brand" href="{% url 'home' %}"><h3 style="margin-top: 5px;">Adbul<span class="cars">Cars</span></h3></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'all-car-brands' 'hunda' %}">Hunda</a>
+            <a class="dropdown-item" href="{% url 'all-car-brands' 'toyota' %}">Toyota</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'all-brands' %}">All of them</a>
+          </div>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin-page' %}">Admin</a>
+        </li>
+        {% endif %}
+        
+      </ul>
+
+      <form method="POST" action="{% url 'search-cars' %}" class="form-inline my-2 my-lg-0">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" name="searched" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        
+      </form>
+
+    </div>
+  </nav>

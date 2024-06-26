@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br><br>
+    {% if searched %}
+    <div class="card">
+
+    <div class="card-header">
+        
+        You Serched For ' {{ searched }} '
+       
+    </div>
+
+    <div class="card-body"> 
+    <form method="POST" action="{% url 'search-cars' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <input type="search"  placeholder="Search Events" name="searched" class="form-control"  >
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    
+    </div>
+    </div>
+     <br><br>
+
+    {% for car in cars %}
+    <div class="card">
+
+      <div class="card-header">
+        {{car.brand}}
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'car-info' car.slug %}">{{ car }}</a></h5>
+          <p class="card-text">
+            <ul>
+            <li>Description: {{ car.description }}</li>
+            
+            </ul>
+          </p> 
+            <br>
+      </div>
+    </div>
+      <br>
+    {% endfor %}
+
+    {% else %}
+    <h4>Hey! You forgot to search for a Car</h4>
+    {% endif %} <br><br><br><br><br><br><br><br>
+{% endblock %}
+
+  

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<ul class="cards">
+  {% for post in posts %}
+    <li>
+      <a href="{% url 'car-info' post.slug %}" class="card">
+        <img src="{{ post.images.url }}" class="card__image" alt="" />
+        <div class="card__overlay"> 
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+            <div class="card__header-text">
+              <h3 class="card__title">{{ post.name }}</h3>            
+              <span class="card__status">{{ post.brand }}</span><br>
+            </div>
+          </div>
+          <p class="card__description">{{ post.description }}</p>
+        </div>
+      </a>      
+    </li>
+    {% endfor %}
+
+   
+  {% endblock %}
+    

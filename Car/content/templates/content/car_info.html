@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/car_info.css' %}">
+    
+<div class="container">
+    <h3>{{ cars.name }}</h3><br>
+
+    <img src="{{ cars.images.url }}" alt=""><br><br><br>
+
+    <p>{{ cars.description }}</p><br>
+
+    <h4>Made by <i>{{ cars.brand }}</i></h4>
+</div>
+    
+    
+  {% endblock %}
+    

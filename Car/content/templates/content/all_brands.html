@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<ul class="cards">
+  {% for brand in brands %}
+    <li>
+      <a href="{% url 'all-car-brands' brand.slug %}" class="card">
+        
+        {% if brand.images %}        
+        <img src="{{ brand.images.url }}" class="card__image" alt="" />
+        {% else %}
+        <img src="{% static 'img/car.png' %}" class="card__image" alt="" />
+        {% endif %}
+        
+        <div class="card__overlay"> 
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+            <div class="card__header-text">
+              <h3 class="card__title">{{ brand.name }}</h3>            
+              <span class="card__status">{{ brand.brand }}</span>
+            </div>
+          </div>
+          <p class="card__description">{{ brand.description }}</p>
+        </div>
+      </a>      
+    </li>
+    {% endfor %}
+
+   
+  {% endblock %}
+    

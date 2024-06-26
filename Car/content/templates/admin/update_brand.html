@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<br><br>
+<h2>Update Brand</h2><br>
+
+<form action="" method = 'POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-secondary" value="Update">
+</form>
+<br><br>
+
+
+
+   
+{% endblock %}
+    
